@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticketing Center</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            text-align: center;
+              font-family: "Arsenal SC", sans-serif;
+            font-weight: 400;
+             font-style: normal;
+            background-image: url(https://i.gifer.com/6wY.gif);
+                background-size: cover;
+                background-position: center;
+        }
+        .container {
+    background-color: darkblue;
+    background-image: url(https://img.freepik.com/premium-vector/holographic-pink-dark-blue-gradient-background_659214-27.jpg);
+     background-size: cover;
+                background-position: center;
+    width: 50%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: purple;
+    position: center;
+}
+.input-box {
+    margin-bottom: 10px;
+}
+
+input {
+    width: 50px;
+    padding: 5px;
+    font-size: 16px;
+}
+
+        .section {
+            background-color: pink;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+        .button {
+            background-color: red;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+        }
+
+    h2 {
+        font-size: 70%;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="background-color: purple; padding: 10px;">Ticketing Center</h1>
+        
+        <div class="section" onclick="toggleSection('personalInfo')">► Personal Information</div>
+        <div id="personalInfo" class="hidden">
+            <input type="text" placeholder="Complete Name" id="name"><br><br>
+            <input type="email" placeholder="Email" id="email"><br><br>
+            <button class="button" onclick="submitInfo()">SUBMIT INFO</button>
+        </div>
+
+        <div class="section" onclick="toggleSection('ticketPrice')">► Ticket Price</div>
+        <div id="ticketPrice" class="hidden">
+            <label>Choose your seat:</label>
+            <select id="seatType">
+                <option value="50">Lower Box - $50</option>
+                <option value="30">Upper Box - $30</option>
+                <option value="100">VIP - $100</option>
+            </select><br><br>
+            <label>Choose an option:</label>
+            <select id="ticketOption">
+                <option value="1">Regular</option>
+                <option value="0.8">Discounted (20% Off)</option>
+            </select><br><br>
+            <p>Price: $<span id="price">0</span></p>
+            <button class="button" onclick="showPrice()">TICKET PRICE</button>
+        </div>
+
+        <div class="section" onclick="toggleSection('printTicket')">► Print Ticket</div>
+        <div id="printTicket" class="hidden">
+            <img src="https://png.pngtree.com/png-vector/20220527/ourmid/pngtree-flight-ticket-plane-pass-air-png-image_4757691.png" alt="Cinema Ticket" style="width: 50%;">
+            <button class="button" onclick="printTicket()">PRINT TICKET</button>
+        </div>
+    </div>
+            <h2>© NERIZA A. CALANGLANG</h2>
+
+
+    <script>
+        function toggleSection(id) {
+            var section = document.getElementById(id);
+            section.classList.toggle('hidden');
+        }
+        function submitInfo() {
+            alert("Information submitted successfully!");
+        }
+        function showPrice() {
+            var seatPrice = parseFloat(document.getElementById('seatType').value);
+            var discount = parseFloat(document.getElementById('ticketOption').value);
+            var finalPrice = seatPrice * discount;
+            document.getElementById('price').textContent = finalPrice.toFixed(2);
+            alert("Your ticket price is " + finalPrice + ". Proceed to the next section.");
+        }
+        function printTicket() {
+            alert("Printing your ticket...");
+        }
+    </script>
+</body>
+</html>
+
